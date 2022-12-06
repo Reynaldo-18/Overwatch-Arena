@@ -42,8 +42,6 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
     private TextView forgotPasswordTexView;
     private TextView registerTexView;
 
-    private TextInputLayout userEmailTextLayout, userPasswordTextInput;
-
     private FrameLayout googleLogin;
     private String enterEmailLogin, enterPasswordLogin;
 
@@ -65,9 +63,6 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
         forgotPasswordTexView.setOnClickListener(this);
         registerTexView = (TextView) findViewById(R.id.register_textView);
         registerTexView.setOnClickListener(this);
-
-        userEmailTextLayout = (TextInputLayout) findViewById(R.id.enterEmail_textInput);
-        userPasswordTextInput = (TextInputLayout) findViewById(R.id.password_TextInput);
 
         myAuth = FirebaseAuth.getInstance();
 
@@ -108,20 +103,22 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
 
         //if the user leaves email box empty than they will get a error warning
         if(enterEmailLogin.trim().equalsIgnoreCase("")){
-            if(enabled) {
-                userEmailTextLayout.setError("Email is required!");
-            } else{
-                userEmailTextLayout.setErrorEnabled(false);
-            }
+            enterEmailEditText.setError("Email is required!");
         //it validates the email from the user
-        } else if(!Patterns.EMAIL_ADDRESS.matcher(enterEmailLogin).matches()){
+        }
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(enterEmailLogin).matches()){
             enterEmailEditText.setError("Invalid Email!");
 
         //if the user leaves the password box empty they will get an error warning
-        } else if(enterPasswordLogin.trim().equalsIgnoreCase("")){
+        }
+
+        if(enterPasswordLogin.trim().equalsIgnoreCase("")){
             enterPasswordEditText.setError("Password is required!");
 
-        } else if(enterPasswordLogin.length() < 8) {
+        }
+
+        if(enterPasswordLogin.length() < 8) {
             enterPasswordEditText.setError("Password is short");
 
         } else{

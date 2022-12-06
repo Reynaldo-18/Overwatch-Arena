@@ -82,11 +82,15 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             enterFullNameEditText.setError("This field is blank!");
 
         //if user leaves email box empty the user will get a error
-        } else if(enterEmail.trim().equalsIgnoreCase("")){
+        }
+
+        if(enterEmail.trim().equalsIgnoreCase("")){
             enterEmailEditText.setError("This field is blank!");
 
         //if user leaves password box empty the user will get a error
-        } else if(enterPassword.trim().equalsIgnoreCase("")){
+        }
+
+        if(enterPassword.trim().equalsIgnoreCase("")){
             enterPasswordEditText.setError("This field is blank!");
 
         //this will make sure the email address is in proper format
