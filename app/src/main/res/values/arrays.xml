@@ -11,6 +11,7 @@
         <item>widow</item>
     </string-array>
 
+
     <string-array name="hero_HP">
         <item>500</item>
         <item>350</item>

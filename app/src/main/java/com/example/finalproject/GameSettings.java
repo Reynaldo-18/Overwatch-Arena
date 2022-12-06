@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import android.graphics.Color;
+
 import java.io.Serializable;
 
 public class GameSettings implements Serializable {
@@ -11,6 +13,7 @@ public class GameSettings implements Serializable {
     private int[] colors;
     private boolean colorChanged;
     private String trophyString;
+
 
     public GameSettings(){
         this(R.color.white, R.drawable.thumbs_up,Difficulty.EASY);

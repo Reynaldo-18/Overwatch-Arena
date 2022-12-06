@@ -17,17 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class WinnerActivity extends AppCompatActivity {
 
-    //private static final String TAG = MainActivity.class.getSimpleName();
     private static final String TAG = ".WinnerActivity";
     private NotificationManager notificationManager;
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
@@ -36,17 +27,14 @@ public class WinnerActivity extends AppCompatActivity {
     private static final int NOTIFICATION_ID_0 = 0;
     private GameSettings settings;
     private ConstraintLayout background;
-
     private Player player;
     private Enemy enemy;
-    private ImageView trophyImg;
-    private ImageView winnerImg;
+    private ImageView trophyImg, winnerImg;
     private TextView winnerTitle;
     private String WonBy_Text;
     public static final String SHARED_PREFS = "sharedPrefs";
     private static final String COLOR = "color";
     public static final String TROPHY_IMG = "trophyImage";
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,16 +43,12 @@ public class WinnerActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-
-
         winnerTitle = (TextView) findViewById(R.id.score_winning);
         winnerImg = (ImageView) findViewById(R.id.player_image_winning);
         player = (Player) extras.getSerializable("player");
         player.addWin();
         enemy = (Enemy) extras.getSerializable("enemy");
 
-
-        //----------------------------My Code-------------------------
         background = (ConstraintLayout) findViewById(R.id.bg_winner);
         trophyImg = (ImageView) findViewById(R.id.trophy_img);
         settings = (GameSettings) extras.getSerializable("settings");

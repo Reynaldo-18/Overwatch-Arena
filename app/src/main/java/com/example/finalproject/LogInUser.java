@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -19,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,10 +42,14 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
     private TextView forgotPasswordTexView;
     private TextView registerTexView;
 
+    private TextInputLayout userEmailTextLayout, userPasswordTextInput;
+
     private FrameLayout googleLogin;
     private String enterEmailLogin, enterPasswordLogin;
 
     private FirebaseAuth myAuth;
+
+    private String isVerified;
 
 
     @Override
@@ -58,6 +65,9 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
         forgotPasswordTexView.setOnClickListener(this);
         registerTexView = (TextView) findViewById(R.id.register_textView);
         registerTexView.setOnClickListener(this);
+
+        userEmailTextLayout = (TextInputLayout) findViewById(R.id.enterEmail_textInput);
+        userPasswordTextInput = (TextInputLayout) findViewById(R.id.password_TextInput);
 
         myAuth = FirebaseAuth.getInstance();
 
@@ -94,12 +104,15 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
         enterEmailLogin = enterEmailEditText.getText().toString();
         enterPasswordLogin = enterPasswordEditText.getText().toString();
 
-        FirebaseUser user = myAuth.getCurrentUser();
+        boolean enabled = true;
 
         //if the user leaves email box empty than they will get a error warning
         if(enterEmailLogin.trim().equalsIgnoreCase("")){
-            enterEmailEditText.setError("Email is required!");
-
+            if(enabled) {
+                userEmailTextLayout.setError("Email is required!");
+            } else{
+                userEmailTextLayout.setErrorEnabled(false);
+            }
         //it validates the email from the user
         } else if(!Patterns.EMAIL_ADDRESS.matcher(enterEmailLogin).matches()){
             enterEmailEditText.setError("Invalid Email!");
@@ -120,14 +133,17 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
                     //if the email and password from the user matches they will be logged in
                     if(task.isSuccessful()){
                         //if the email is verified than the user will log in and be taken to main activity
-//                        if(user.isEmailVerified()){
+                        FirebaseUser user = myAuth.getCurrentUser();
+
+                        if(user.isEmailVerified()){
                             Toast.makeText(LogInUser.this, "Logged In", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LogInUser.this, MainActivity.class);
                             startActivity(intent);
-//                        } else {
-//                            Toast.makeText(LogInUser.this, "Verify Email", Toast.LENGTH_SHORT).show();
-//                        }
 
+                        } else {
+                            user.sendEmailVerification();
+                            Toast.makeText(LogInUser.this, "Verify Email", Toast.LENGTH_SHORT).show();
+                        }
                     } else{
                         Toast.makeText(LogInUser.this, "Logged In Failed.", Toast.LENGTH_SHORT).show();
                     }

@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class LoserActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -33,19 +31,19 @@ public class LoserActivity extends AppCompatActivity {
     private TextView losingPrompt;
     private String lostScore;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loser_activity);
-
 
         player = new Player();
         enemy = new Enemy();
         Bundle extras = getIntent().getExtras();
         losingPrompt = (TextView) findViewById(R.id.lose_prompt);
         playerImg = (ImageView) findViewById(R.id.playerimg_lose);
+
+
+
         if(extras.getSerializable("playerlose") != null) {
             Log.d(TAG, "onCreate: player is not null");
             player = (Player) extras.getSerializable("playerlose");
@@ -53,6 +51,13 @@ public class LoserActivity extends AppCompatActivity {
         if(extras.getSerializable("enemywins") != null) {
             Log.d(TAG, "onCreate: enemy is not null");
             enemy = (Enemy) extras.getSerializable("enemywins");
+        }
+
+        Player tempPlayer = (Player) extras.getSerializable("playerlose_damage");
+        Enemy tempEnemy = (Enemy) extras.getSerializable("enemywins_damage");
+        if(tempPlayer != null && tempEnemy != null){
+            player = tempPlayer;
+            enemy = tempEnemy;
         }
 
         int LostBy = player.getHp() - enemy.getHp();

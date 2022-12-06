@@ -19,24 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-/*
- * This is where user picks the move and they don't see what enemy picked
- * UNTIL they return to BattleActivity.java aka after they pick the move.
- *
- * if they win -> WinnerActivity.java (We need to create this class)
- * WinnerActivity.java will also have a notification - win = alarm
- * it'll show how much HP you won by, against whom + your total win record
- *
- * if they loss -> LoserActivity.java (We need to create this class)
- * LoserActivity.java = will show how much HP you lost by, against whom + your total loss record
- *
- * if neither of them aren't dead yet -> return to BattleActivity.java
- * user can see enemy's HP + its own HP and can choose to run or fight.
- *
- * Adding MP + Regen speed will add complexity, so we'll ignore for now
- *
- *
- * */
 
 public class MovesActivity extends AppCompatActivity {
 
@@ -62,7 +44,7 @@ public class MovesActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: On MovesActivity");
         Bundle extras = getIntent().getExtras();
-        Resources res = getResources();
+        //Resources res = getResources();
         player = (Player) extras.getSerializable("player");
         enemy = (Enemy) extras.getSerializable("enemy");
         loadViews();
@@ -94,7 +76,7 @@ public class MovesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 player.setChosenAttack(player.getFirstAttack());
                 generateEnemyMove();
-                launchBattleActivity();
+                launchDamageActivity();
             }
         });
         secondAttackButton = (Button) findViewById(R.id.button_second_attack);
@@ -104,7 +86,7 @@ public class MovesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 player.setChosenAttack(player.getSecondAttack());
                 generateEnemyMove();
-                launchBattleActivity();
+                launchDamageActivity();
             }
         });
         thirdAttackButton = (Button) findViewById(R.id.button_third_attack);
@@ -114,7 +96,7 @@ public class MovesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 player.setChosenAttack(player.getThirdAttack());
                 generateEnemyMove();
-                launchBattleActivity();
+                launchDamageActivity();
 
             }
         });
@@ -135,93 +117,6 @@ public class MovesActivity extends AppCompatActivity {
             enemy.setChosenAttack(enemyGeneratedMove);
         }
     }
-
-    /*
-    public void move1 (View view){
-        moveChosen = (String) hero_move1_dmglist.get(heroValue);
-        heroMove = Integer.valueOf(moveChosen);
-        enemyPickMove();
-    }
-
-    public void move2 (View view){
-        moveChosen = (String) hero_move2_dmglist.get(heroValue);
-        heroMove = Integer.valueOf(moveChosen);
-        enemyPickMove();
-    }
-
-    public void move3 (View view){
-        moveChosen = (String) hero_move3_dmglist.get(heroValue);
-        heroMove = Integer.valueOf(moveChosen);
-        enemyPickMove();
-    }
-
-    public void enemyPickMove() {
-        Random random = new Random();
-        int enemy_picked = random.nextInt(2);
-
-        if (enemy_picked == 0) {
-            moveEnemyChosen = (String) hero_move1_dmglist.get(enemyValue);
-        } else if (enemy_picked == 1) {
-            moveEnemyChosen = (String) hero_move2_dmglist.get(enemyValue);
-        } else if (enemy_picked == 2) {
-            moveEnemyChosen = (String) hero_move3_dmglist.get(enemyValue);
-        }
-        enemyMove = Integer.valueOf(moveEnemyChosen);
-        Log.d(TAG, "Hero Chose: " + heroMove);
-        Log.d(TAG, "Enemy Chose: " + enemyMove);
-
-        calculateBattle();
-    }
-
-    public void calculateBattle() {
-        heroHP = heroHP - enemyMove;
-        enemyHP = enemyHP - heroMove;
-
-        Log.d(TAG, "Hero HP: " + heroHP);
-        Log.d(TAG, "Enemy HP: " + enemyHP);
-
-        if (heroHP > 0 || enemyHP > 0) {
-            sendBack();
-        }
-        if (enemyHP <= 0) {
-            winnerFound();
-        }
-        if (heroHP <= 0) {
-            loserFound();
-        }
-    }
-
-    // goes back to battle activity
-    public void sendBack() {
-        Intent intent = new Intent(this, BattleActivity.class);
-        intent.putExtra("HeroChosen", heroChosen);
-        intent.putExtra("HeroValue", heroValue);
-        intent.putExtra("HeroHP", heroHP);
-        intent.putExtra("HeroMP", heroMP);
-        intent.putExtra("settings_to_battle", settings);
-        intent.putExtra("EnemyChosen", enemyChosen);
-        intent.putExtra("EnemyValue", enemyValue);
-        intent.putExtra("EnemyHP", enemyHP);
-        intent.putExtra("EnemyMP", enemyMP);
-        startActivity(intent);
-    }
-
-    // NEED TO WORK!!
-    // goes to the winners activity screen
-    public void winnerFound() {
-        Intent intent = new Intent(this, WinnerActivity.class);
-        intent.putExtra("HeroChosen", heroChosen);
-        intent.putExtra("HeroValue", heroValue);
-        intent.putExtra("HeroHP", heroHP);
-        intent.putExtra("HeroMP", heroMP);
-        intent.putExtra("settings_to_winner", settings);
-        intent.putExtra("EnemyChosen", enemyChosen);
-        intent.putExtra("EnemyValue", enemyValue);
-        intent.putExtra("EnemyHP", enemyHP);
-        intent.putExtra("EnemyMP", enemyMP);
-        startActivity(intent);
-    }
-*/
     // NEED TO WORK!!
     // goes to the losers activity screen
     public void launchLoserActivity() {
@@ -260,5 +155,14 @@ public class MovesActivity extends AppCompatActivity {
         loadData();
         updateViews();
         saveData();
+    }
+
+    public void launchDamageActivity(){
+        Intent intent = new Intent(this, DamageActivity.class);
+        intent.putExtra("player", player);
+        intent.putExtra("enemy", enemy);
+        intent.putExtra("settings", settings);
+        startActivity(intent);
+        finish();
     }
 }

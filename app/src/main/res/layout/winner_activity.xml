@@ -52,7 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <Button
         android:id="@+id/return_button"
         android:layout_width="wrap_content"
@@ -61,10 +60,8 @@
         android:text="Return Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score_winning"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/score_winning" />
 
     <ImageView
         android:id="@+id/trophy_img"
@@ -77,6 +74,5 @@
         app:layout_constraintTop_toBottomOf="@+id/player_image_winning"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/thumbs_up" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

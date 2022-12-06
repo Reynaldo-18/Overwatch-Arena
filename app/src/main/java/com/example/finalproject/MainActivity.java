@@ -114,9 +114,6 @@ public class MainActivity extends AppCompatActivity {
             settings = new GameSettings();
             background.setBackgroundResource(settings.getBgColor());
         }else {
-            Log.d(TAG, "loadSettings: trophy is: " + settings.getTrophyString());
-            Log.d(TAG, "loadSettings: is color chnaged: " + settings.getColorChanged());
-            //Log.d(TAG, "loadSettings: settings bg color is: " + settings.getBgColor());
             background.setBackgroundColor(settings.getBgColor());
         }
     }
@@ -218,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("current_settings", settings);
                 startActivity(intent);
                 break;
+
             case R.id.scoreboard:
                 Log.d(TAG, "onOptionsItemSelected: you clicked on item 2!");
                 Intent scoreboardIntent = new Intent(this, ScoreBoardActivity.class);
@@ -231,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.logOff:
                 myAuth.signOut();
-                Intent logOff = new Intent(this, LogInUser.class);
+                Intent logOff = new Intent(MainActivity.this, LogInUser.class);
                 logOff.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(logOff);
                 break;

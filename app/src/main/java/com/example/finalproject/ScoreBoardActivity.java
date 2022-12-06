@@ -11,14 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ScoreBoardActivity extends AppCompatActivity {
 
@@ -51,7 +44,6 @@ public class ScoreBoardActivity extends AppCompatActivity {
         loadScore();
         loadViews();
         recycleViewSetUp();
-
 
     }
 
@@ -122,5 +114,4 @@ public class ScoreBoardActivity extends AppCompatActivity {
         loadData();
         updateViews();
     }
-
 }

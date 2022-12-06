@@ -47,8 +47,6 @@ public class BattleActivity extends AppCompatActivity {
         loadViews();
         loadSettings(extras);
         reloadData();
-        calculateHealth();
-
     }
 
     //---------------------------LoadData--------------------------------------
@@ -62,41 +60,6 @@ public class BattleActivity extends AppCompatActivity {
             player = tempPlayer;
             enemy = tempEnemy;
         }
-    }
-
-    public void calculateHealth(){
-        int damage = 0;
-        if(player.getAttackDamage() > enemy.getAttackDamage()){
-            damage = player.getAttackDamage() - enemy.getAttackDamage();
-            enemy.decreaseHpBy(damage);
-        }else if(player.getAttackDamage() < enemy.getAttackDamage()) {
-            damage = enemy.getAttackDamage() - player.getAttackDamage();
-            player.decreaseHpBy(damage);
-        }
-        else{}
-        Log.d(TAG, "calculateHealth: player Hp is: " + player.getHp());
-        playerHealthbar.setProgress(player.getHp());
-        playerHealthbar.setMax(100);
-        Log.d(TAG, "calculateHealth: enemy Hp is: " + enemy.getHp());
-        enemyHealthbar.setProgress(enemy.getHp());
-        enemyHealthbar.setMax(100);
-        if(!player.isAlive()){
-            //Launch Loser ACTIVITY
-            launchLoserActivity();
-        }else if(!enemy.isAlive()){
-            //Launch WinningActivity
-            launchWinningActivity();
-        }
-    }
-
-
-    public void launchWinningActivity() {
-        Intent intent = new Intent(this, WinnerActivity.class);
-        intent.putExtra("settings_to_winner", settings);
-        intent.putExtra("player", player);
-        intent.putExtra("enemy", enemy);
-        startActivity(intent);
-        finish();
     }
 
     public void launchLoserActivity() {
@@ -124,8 +87,11 @@ public class BattleActivity extends AppCompatActivity {
         enemyImage = (ImageView) findViewById(R.id.enemy_image_battle);
         enemyImage.setImageResource(enemy.getImage());
         playerHealthbar = (ProgressBar) findViewById(R.id.player_healthbar);
+        playerHealthbar.setProgress(player.getHp());
+        playerHealthbar.setMax(100);
         enemyHealthbar = (ProgressBar) findViewById(R.id.enemy_healthbar);
-
+        enemyHealthbar.setProgress(enemy.getHp());
+        enemyHealthbar.setMax(100);
     }
 
     public void loadSettings(Bundle extras){
