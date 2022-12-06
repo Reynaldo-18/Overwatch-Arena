@@ -120,13 +120,13 @@ public class LogInUser extends AppCompatActivity implements View.OnClickListener
                     //if the email and password from the user matches they will be logged in
                     if(task.isSuccessful()){
                         //if the email is verified than the user will log in and be taken to main activity
-                        if(user.isEmailVerified()){
+//                        if(user.isEmailVerified()){
                             Toast.makeText(LogInUser.this, "Logged In", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LogInUser.this, MainActivity.class);
                             startActivity(intent);
-                        } else {
-                            Toast.makeText(LogInUser.this, "Verify Email", Toast.LENGTH_SHORT).show();
-                        }
+//                        } else {
+//                            Toast.makeText(LogInUser.this, "Verify Email", Toast.LENGTH_SHORT).show();
+//                        }
 
                     } else{
                         Toast.makeText(LogInUser.this, "Logged In Failed.", Toast.LENGTH_SHORT).show();

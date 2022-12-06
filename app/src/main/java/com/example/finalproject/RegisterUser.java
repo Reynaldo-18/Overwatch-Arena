@@ -110,20 +110,21 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
                     //this will take the current user registering and will verify their email address and will send them back to
                     //login activity
-                    myAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
+//                    myAuth.getCurrentUser().sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void unused) {
 
                             Toast.makeText(RegisterUser.this, "You Registered! Email verification sent!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterUser.this, LogInUser.class);
                             startActivity(intent);
                         }
-                    });
-                } else {
-                    Toast.makeText(RegisterUser.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
-                }
+//                    });
+//                } else {
+//                    Toast.makeText(RegisterUser.this, "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }
