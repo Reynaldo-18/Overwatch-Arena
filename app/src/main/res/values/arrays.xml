@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hero_name">
+        <item>genji</item>
+        <item>mei</item>
+        <item>moira</item>
+        <item>cassidy</item>
+        <item>roadhog</item>
+        <item>reaper</item>
+        <item>mercy</item>
+        <item>widow</item>
+    </string-array>
+
+    <string-array name="hero_HP">
+        <item>500</item>
+        <item>350</item>
+        <item>400</item>
+        <item>450</item>
+        <item>600</item>
+        <item>550</item>
+        <item>500</item>
+        <item>400</item>
+    </string-array>
+
+    <string-array name="hero_MP">
+        <item>350</item>
+        <item>500</item>
+        <item>600</item>
+        <item>550</item>
+        <item>300</item>
+        <item>350</item>
+        <item>400</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="hero_move1">
+        <item>SHURIKEN</item>
+        <item>ENDOTHERMIC BLASTER</item>
+        <item>SOUL SUCK</item>
+        <item>PEACEKEEPER</item>
+        <item>SCRAP GUN</item>
+        <item>HELLFIRE SHOTGUNS</item>
+        <item>CADUCEUS BLASTER</item>
+        <item>WIDOWS KISS</item>
+    </string-array>
+
+    <string-array name="hero_move1_dmg">
+        <item>75</item>
+        <item>100</item>
+        <item>35</item>
+        <item>50</item>
+        <item>20</item>
+        <item>70</item>
+        <item>30</item>
+        <item>25</item>
+    </string-array>
+
+    <string-array name="hero_move2">
+        <item>DEFLECT ONCOMING PROJECTILES BACK</item>
+        <item>ICE WALL OFF MAP</item>
+        <item>CAST BIOTIC ORB</item>
+        <item>MAGNETIC GRENADE</item>
+        <item>CHAIN HOOK</item>
+        <item>THE REAPING</item>
+        <item>RESURRECT</item>
+        <item>VENOM MINE</item>
+    </string-array>
+
+    <string-array name="hero_move2_dmg">
+        <item>10</item>
+        <item>30</item>
+        <item>50</item>
+        <item>35</item>
+        <item>50</item>
+        <item>75</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="hero_move3">
+        <item>DRAGONBLADE</item>
+        <item>CAST A BLIZZARD TO FREEZE</item>
+        <item>COALESCENCE</item>
+        <item>DEADEYE, ITS HIGH NOON</item>
+        <item>WHOLE HOG</item>
+        <item>DEATH BLOSSOM</item>
+        <item>VALKYRIE</item>
+        <item>INFRA SIGHT</item>
+    </string-array>
+
+    <string-array name="hero_move3_dmg">
+        <item>100</item>
+        <item>125</item>
+        <item>150</item>
+        <item>130</item>
+        <item>120</item>
+        <item>140</item>
+        <item>170</item>
+        <item>150</item>
+    </string-array>
+</resources>

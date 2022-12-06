@@ -1,0 +1,33 @@
+
+<resources>
+    <string name="app_name">Final Project</string>
+    <string name="usersHero">YOUR HERO</string>
+    <string name="move1">button</string>
+    <string name="move2">button</string>
+    <string name="move3">button</string>
+    <string name="genjiHero">GENJI</string>
+    <string name="genji">Genji</string>
+    <string name="mei">Mei</string>
+    <string name="moira">Moira</string>
+    <string name="cassidy">Cassidy</string>
+    <string name="roadhog">Roadhog</string>
+    <string name="reaper">Reaper</string>
+    <string name="mercy">Mercy</string>
+    <string name="widow">Widow</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="login">Log in</string>
+    <string name="register">Register</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset">Reset</string>
+    <string-array name="trophies">
+        <item>Select Trophy</item>
+        <item>Thumbs-up</item>
+        <item>Cup</item>
+        <item>Medal</item>
+
+    </string-array>
+</resources>

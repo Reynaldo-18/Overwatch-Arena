@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/preferences"
+        android:title="preferences"
+        android:icon="@drawable/ic_baseline_view_headline_24"
+        app:showAsAction="ifRoom"
+    />
+
+    <item
+        android:id="@+id/scoreboard"
+        android:title="Scoreboard"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/logOff"
+        android:title="Log Out"
+        app:showAsAction="never"
+    />
+
+</menu>

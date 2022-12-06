@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/bg_winner"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3693DD"
+    >
+
+    <ImageView
+        android:id="@+id/player_image_winning"
+        android:layout_width="366dp"
+        android:layout_height="242dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_you_won"
+        app:layout_constraintVertical_bias="0.016"
+        app:srcCompat="@drawable/placeholder" />
+
+    <TextView
+        android:id="@+id/score_winning"
+        android:layout_width="343dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Who Won/ By How Much"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trophy_img" />
+
+    <TextView
+        android:id="@+id/textView_you_won"
+        android:layout_width="169dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="YOU WON"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/return_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickReturn"
+        android:text="Return Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score_winning"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/trophy_img"
+        android:layout_width="323dp"
+        android:layout_height="192dp"
+        android:layout_marginTop="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player_image_winning"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/thumbs_up" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
